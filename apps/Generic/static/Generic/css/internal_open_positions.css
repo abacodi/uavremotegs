@@ -1,0 +1,65 @@
+.btn.btn-outline-primary {
+color: var(--noactive-bg-color);
+background: transparent none;
+border-color: var(--noactive-bg-color);
+}
+
+.btn.btn-outline-primary:hover {
+color: #fff;
+background-color: var(--noactive-bg-color);
+border-color: var(--noactive-bg-color);
+}
+
+.btn.btn-outline-primary:not(:disabled):not(.disabled):active {
+color: #fff;
+background-color: var(--noactive-bg-color);
+border-color: var(--noactive-bg-color);
+}
+
+.btn.btn-outline-primary.focus, .login:focus, .login:not(:disabled):not(.disabled):active:focus {
+box-shadow: 0 0 0 0.2rem var(--active-bg-color);
+}
+.modal {
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+z-index: 99999999; /* Sit on top */
+left: 0;
+top: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-content {
+background-color: #fefefe;
+margin: 15% auto; /* 15% from the top and centered */
+padding: 20px;
+border: 1px solid #888;
+width: 80%; /* Could be more or less, depending on screen size */
+}
+
+
+.tooltiptext {
+visibility: hidden;
+width: fit-content;
+background-color: var(--active-bg-color);
+color: #fff;
+text-align: center;
+border-radius: 6px;
+padding: 5px 5px;
+
+/* Position the tooltip */
+position: absolute;
+z-index: 1;
+top: -2%;
+right: 2%;
+margin-left: -1%;
+}
+#edit_button:hover .tooltiptext {
+    visibility: visible;
+}
+
+.tox.tox-tinymce-aux {
+    z-index: 999999999;
+}

@@ -1,0 +1,248 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> {# Mobile responsive #}
+
+        <!-- Title -->
+        {% block title %} {% endblock %}
+
+        <!-- Typography -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,800" rel="stylesheet">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+        <!-- Font Awesome Icons -->
+        <script src="https://use.fontawesome.com/9bbdf83359.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Scripts JS depending on CDN -->
+        <!-- jQuery CDN (local fallback available) -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <!-- jQuery local fallback -->
+        <script>window.jQuery || document.write('<script src="{% static 'Generic/js/fallback/jquery/jquery-3.3.1.min.js' %}"><\/script>')</script>
+
+        <!-- Popper CDN (local fallback available) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <!-- Popper local fallback -->
+        <script>if(typeof(Popper) === 'undefined') {document.write('<script src="{% static 'Generic/js/fallback/popper/1.14.7/popper.min.js' %}"><\/script>')}</script>
+
+        <!-- Date picker -->
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+        <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <!-- Date picker local fallback -->
+        <script>window.jQuery.ui || document.write('<script src="{% static 'Generic/js/fallback/jquery-ui/1.12.1/jquery-ui.js' %}"><\/script>')</script>
+        <script>
+            // Resolve name collision between jQuery UI and Twitter Bootstrap
+            $.widget.bridge('uitooltip', $.ui.tooltip);
+        </script>
+        
+
+        <!-- Bootstrap JS CDN (local fallback available) -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <!-- Bootstrap local fallback -->
+        <script>if(typeof($.fn.modal) === 'undefined'){document.write('<script src="{% static 'Generic/js/fallback/bootstrap/4.3.1/bootstrap.min.js' %}"><\/script>')}</script>
+
+
+        <!-- To work with cookies CDN (local fallback available) -->
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+        <!-- Cookies local fallback -->
+        <script>window.Cookies || document.write('<script src="{% static 'Generic/js/fallback/cookies/js.cookie.min.js' %}"><\/script>')</script>
+
+        <!-- Echarts CDN (local fallback available) -->
+        <script src="https://rawgit.com/ecomfe/echarts/4.1.0/dist/echarts.min.js"></script>
+        <!-- Echarts local fallback -->
+        <script>window.echarts || document.write('<script src="{% static 'Generic/js/fallback/echarts/4.1.0/echarts.min.js' %}"><\/script>')</script>
+
+        <!-- Tagging -->
+        <script src="{% static 'Generic/js/bootstrap-tagsinput.js'%}"></script>
+        <link rel="stylesheet" href="{% static 'Generic/css/bootstrap-tagsinput.css'%}">
+
+        <!-- Custom CSS files -->
+        <link rel="stylesheet" type="text/css" href="{% static 'Generic/css/base/main_elements.css' %}" /> {# Override of some styles of bootsrap#}
+        <link rel="stylesheet" type="text/css" href="{% static 'Generic/css/base/sidebar.css' %}" /> {# Override of some styles of bootsrap#}
+        <link rel="stylesheet" type="text/css" href="{% static 'Generic/css/base/footer.css' %}" /> {# Override of some styles of bootsrap#}
+        <link rel="stylesheet" type="text/css" href="{% static 'Generic/css/base/small_devices.css' %}" /> {# Override of some styles of bootsrap#}
+        <link rel="stylesheet" type="text/css" href="{% static 'Generic/css/base/navbar.css' %}" /> {# Override of some styles of bootsrap#}
+        <link rel="stylesheet" type="text/css" href="{% static 'Generic/css/variables.css' %}" /> {# Override of some styles of bootsrap#}
+        <link rel="stylesheet" type="text/css" href="{% static 'Generic/css/base/home.css' %}" />
+
+        <link rel="stylesheet" type="text/css" href="{% static 'Generic/css/original.css' %}" /> {# Override of some styles of bootsrap#}
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href={% static 'Generic/img/favicon.ico' %} type="image/x-icon">
+        <link rel="icon" href={% static 'Generic/img/favicon.ico' %} type="image/x-icon">
+    </head>
+
+    {%  if request.user.is_authenticated %}
+        <body>
+            <!-- Stylesheet CSS fallbacks -->
+            <!-- Bootstrap CSS local fallback -->
+            <div id="bootstrapCssTest" class="d-none"></div>
+            <script>
+                $(function() {
+                    if ($('#bootstrapCssTest').is(':visible')) {
+                        $("head").prepend('<link rel="stylesheet" type="text/css" href="{% static 'Generic/css/fallback/bootstrap/4.3.1/bootstrap.min.css' %}">');
+                    }
+                });
+            </script>
+            <!-- Font Awesome Icons Local fallback -->
+            <script>
+                (function($){
+                    let $span = $('<span class="fa" style="display:none"></span>').appendTo('body');
+                    if ($span.css('fontFamily') !== '"Font Awesome 5 Free"' ) {
+                        // Fallback Link
+                        $('head').append('<link  rel="stylesheet" type="text/css" href="{% static 'Generic/css/fallback/fontawesome/v5.8.1/all.css' %}">');
+                    }
+                    $span.remove();
+                })(jQuery);
+            </script>
+            <!-- Jquery-ui fallback -->
+            <div class="ui-helper-hidden"></div>
+            <script>
+                // jQuery UI CSS Fallback
+                $(function () {
+                    if ($('.ui-helper-hidden:first').is(':visible') === true) {
+                        // Fallback Link
+                        console.log("fallback");
+                        $('head').append('<link  rel="stylesheet" type="text/css" href="{% static 'Generic/css/fallback/jquery-ui/1.12.1/jquery-ui.css' %}">');
+                    }
+                });
+            </script>
+            
+
+
+            <div class="box" >
+                <div id="navBar" class="container-fluid">
+                    <div class="row">
+                        <!-- Navigation bar -->
+                        <div id="contentNavBar">
+                            <nav id="navigationBar" class="navbar navbar-expand-custom navbar-light">
+
+                                <!-- Rest of navigation bar -->
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <!-- User settings -->
+                                    <ul class="navbar-nav mr-auto">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                &nbsp;
+                                                <i class="fas fa-user-circle fa-lg" aria-hidden="true"></i>
+                                                {% if request.user.id %}
+                                                    {{ request.user.username }}
+                                                {% else %}
+                                                    Guest
+                                                {% endif %}
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                {% if request.user.id %}
+                                                    <a class="dropdown-item" href="{% url 'Generic:userInfo'%}">My Profile</a>
+                                                {% else %}
+                                                    <a class="dropdown-item" href="{% url 'Generic:userInfo'%}" data-toggle="modal" data-target="#userProfile">Guest</a>
+                                                {% endif %}
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="{% url 'Generic:logout'%}">Logout</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Main applications -->
+                                    <ul class="navbar-nav mr-auto" >
+                                        <li class="nav-item" id="tab_home">
+                                            <a class="nav-link" href="{% url 'Generic:home'%}"><i id="navHome" class="fas fa-home" aria-hidden="true"></i>&nbsp; Home &nbsp;</a>
+                                        </li>
+                                        <li class="nav-item" id="tab_RGS">
+                                            <a class="nav-link" href="{% url 'RGS:home'%}"><i id="navRGS" class="fas fa-book fa-lg" aria-hidden="true"></i>&nbsp; RGS &nbsp;</a>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Version -->
+                                    <a style = "color:white" class="d-lg-inline-block mb-3 mb-md-0 ml-md-3"><strong>v1.0</strong></a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Modal to show an alert when no user -->
+                <div class="modal fade" id="userProfile">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Not available user</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>To show the profile of user, you cannot login as guest.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal to show an alert when no access rights -->
+                <div class="modal fade" id="accessRights">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">No access rights</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>You do not have rights to access this module.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Sidebar + content -->
+                {% block sidebar_content %}
+                {% endblock %}
+
+
+                <!-- Footer -->
+                <div id="contentFooter" class="container-fluid" style="z-index: 10000; padding-left: 0px !important; padding-right: 0px;">
+                    <footer class="footer">
+                        <div class="container-fluid" style="height: 100%;">
+                            <span style="color: white;">Copyright (c) 2023, ABA UAV Remote Ground Station</span>
+                        </div>
+                    </footer>
+                </div>
+
+                <!-- Custom Javascript -->
+                <script type="text/javascript" src="{% static 'Generic/js/wrapper.js' %}" ></script>
+        
+                <!-- Security -->
+                <script>csrftoken = Cookies.get('csrftoken')</script>
+            </div>
+        </body>
+    {% else %}
+        <div class="alert alert-danger" role="alert">
+            To access ABA UAV Remote GS please login.
+            <a href="{% url 'Generic:access'%}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" >Login</a>
+        </div>
+    {% endif %}
+
+    <!-- Custom Scroller Js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    <!-- Script to keep collapsed the sidebar-->
+
+</html>

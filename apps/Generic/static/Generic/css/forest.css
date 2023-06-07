@@ -1,0 +1,23 @@
+/* color of background when the item is not selected*/
+:root {
+    --noactive-bg-color: #593a0e
+}
+
+
+/* color of background when the item is selected*/
+:root {
+    --active-bg-color: 	#72601b
+}
+
+/* color of app background*/
+:root {
+    --bg-color: #818c3c
+}
+
+:root {
+    --title2-size: 4rem;
+}
+
+:root {
+    --sticky-color: #25591f
+}

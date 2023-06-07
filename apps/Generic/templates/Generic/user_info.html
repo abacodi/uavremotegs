@@ -1,0 +1,61 @@
+{% extends 'Generic/base.html' %}
+
+{% block title %}<title>User information</title>{% endblock %}
+
+{% block sidebar_content %}
+    <div class="wrapper" id="wrapper"> 
+        <div class="container-fluid" id="content">
+            <div class="container-fluid" id="module" style="max-width: 100%; width: 100%; margin: 2px">
+                <!-- Title -->
+                <br/>
+                <h3>My profile</h3>
+                <br/>
+
+                <!-- Information -->
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">First name</h5>
+                        </div>
+                        <p class="mb-1">{{request.user.first_name}}</p>
+                    </a>
+                    <a class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Last name</h5>
+                        </div>
+                        <p class="mb-1">{{request.user.last_name}}</p>
+                    </a>
+                    <a class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Mail</h5>
+                        </div>
+                        <p class="mb-1">{{request.user.email}}</p>
+                    </a>
+                        <a class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Is staff?</h5>
+                        </div>
+                        <p class="mb-1">{{request.user.is_staff}}</p>
+                    </a>
+                    <a class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Is superuser?</h5>
+                        </div>
+                        <p class="mb-1">{{request.user.is_superuser}}</p>
+                    </a>
+                    <a class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Last login</h5>
+                        </div>
+                        <p class="mb-1">{{request.user.last_login}}</p>
+                    </a>
+                </div>
+                <br/>
+            </div>
+        </div>
+    </div>
+
+    <style type="text/css">
+        #sidebarCollapse{ display:none; }
+    </style>
+{% endblock %}

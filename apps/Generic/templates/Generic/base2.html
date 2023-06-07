@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <!-- Required meta tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> {# Mobile responsive #}
+
+        <!-- Title -->
+        {% block title %}
+        {% endblock %}
+
+        <!-- Stylesheets CSS depending on CDN -->
+        <!-- Bootstrap CSS (fallback available) -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+
+        <!-- Font Awesome Icons (fallback available) -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
+        <!-- Scripts JS depending on CDN -->
+        <!-- jQuery CDN (fallback available) -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <!-- jQuery local fallback -->
+        <script>window.jQuery || document.write('<script src="{% static 'Generic/js/fallback/jquery/jquery-3.3.1.min.js' %}"><\/script>')</script>
+
+        <!-- Popper CDN (fallback available) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <!-- Popper local fallback -->
+        <script>if(typeof(Popper) === 'undefined') {document.write('<script src="{% static 'Generic/js/fallback/popper/1.14.6/popper.min.js' %}"><\/script>')}</script>
+
+        <!-- Bootstrap JS CDN (fallback available) -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <!-- Bootstrap local fallback -->
+        <script>if(typeof($.fn.modal) === 'undefined'){document.write('<script src="{% static 'Generic/js/fallback/bootstrap/4.2.1/bootstrap.min.js' %}"><\/script>')}</script>
+
+
+        <!-- Custom CSS files -->
+        <link rel="stylesheet" type="text/css" href="{% static 'Generic/css/access/sign_In.css' %}" /> {# Override of some styles of bootsrap#}
+        <link rel="stylesheet" type="text/css" href="{% static 'Generic/css/access/sign_In_sd.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'Generic/css/variables.css' %}" /> {# Override of some styles of bootsrap#}
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href={% static 'Generic/img/favicon.ico' %} type="image/x-icon">
+        <link rel="icon" href={% static 'Generic/img/favicon.ico' %} type="image/x-icon">
+
+</head>
+<body>
+    <!-- Stylesheet fallbacks -->
+    <!-- Bootstrap CSS local fallback -->
+    <div id="bootstrapCssTest" class="hidden"></div>
+    <script>
+        $(function() {
+            if ($('#bootstrapCssTest').is(':visible')) {
+                $("head").prepend('<link rel="stylesheet" type="text/css" href="{% static 'Generic/css/fallback/bootstrap/4.2.1/bootstrap.min.css' %}">');
+            }
+        });
+    </script>
+    <!-- Font Awesome Icons Local fallback -->
+    <script>
+        (function($){
+            let $span = $('<span class="fa" style="display:none"></span>').appendTo('body');
+            if ($span.css('fontFamily') !== '"Font Awesome 5 Free"' ) {
+                console.log('hi');
+                // Fallback Link
+                $('head').append('<link  rel="stylesheet" type="text/css" href="{% static 'Generic/css/fallback/fontawesome/v5.3.1/all.css' %}">');
+            }
+            $span.remove();
+        })(jQuery);
+    </script>
+
+
+    <div style ="top:25%"class="card card-container">
+        <div id="header_sign" style="height: 100px">
+            <p>UAV Remote Ground Station</p>
+        </div>
+        <!-- Personalized block from another html -->
+        <!-- Module starts here -->
+        <div class="container" id="module">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>

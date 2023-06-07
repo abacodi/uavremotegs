@@ -1,0 +1,18 @@
+/* Colors for badges */
+#badge_B {
+    color: #cd7f32;
+    text-align: center;
+}
+#badge_S {
+    color: #C0C0C0;
+    text-align: center;
+}
+#badge_G {
+    color: #FFD700;
+    text-align: center;
+}
+
+/* Color of checked */
+.fa-check{
+    color:#16a01d;
+}

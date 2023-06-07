@@ -1,0 +1,32 @@
+/* Declare your variables here*/
+
+
+/* color of background when the item is not selected*/
+:root {
+    --noactive-bg-color: #5d5caa;
+}
+
+
+/* color of background when the item is selected*/
+:root {
+    --active-bg-color: #6b7dbd;
+}
+
+/* color of app background*/
+:root {
+    --bg-color: #ffffff;
+}
+
+:root {
+    --title2-size: 4rem;
+}
+
+:root {
+    --sticky-color: #b6b6d0;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}

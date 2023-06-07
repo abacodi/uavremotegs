@@ -1,0 +1,80 @@
+{% extends 'Generic/base.html' %}
+
+{% load static %}
+{%load crispy_forms_tags%}
+{% block title %}<title>ABA Remote GS: Themes</title>{% endblock %}
+
+{% block sidebar_content %}
+
+    <!-- Pass the data -->
+    <script>
+        json_theme='{{ theme|safe }}';
+    </script>
+
+    <!-- JS -->
+    <script type="text/javascript" src="{% static 'Generic/js/theme.js' %}" ></script>
+
+    <div class="wrapper" id="wrapper"> 
+        <div class="container-fluid" id="content">
+            <div class="container-fluid" id="module" style="max-width: 100%; width: 100%; margin: 2px">
+                <br/>
+                <p class="lead">Choose Your Theme</p>
+                <hr class="my-4">
+                <br/>
+                <table class="table">
+                    <tbody style="border: 1px solid black">
+                        <tr style="border: 1px solid black" id="row1" height="100px">
+                            <td class="cell" style="border: var(--bg-color); background-color: var(--bg-color);"> Original </td>
+                            <td width ="100px"  style="border: 1px solid black; background-color: #342a70;"></td>
+                            <td width ="100px"  style="border: 1px solid black; background-color: #4c8ed7;"></td>
+                            <td width ="100px"  style="border: 1px solid black; background-color: #ffffff;"></td>
+                            <td width ="100px"  style="border: 1px solid black; background-color: #4156a0;"></td>
+                        </tr>
+                        <tr style="border: 1px solid black" id="row6" height="100px">
+                            <td class="cell" style="border: var(--bg-color); background-color: var(--bg-color);"> Casual </td>
+                            <td width ="100px"  style="border: 1px solid black; background-color: #1D4281;"></td>
+                            <td width ="100px"  style="border: 1px solid black; background-color: #6E778C;"></td>
+                            <td width ="100px"  style="border: 1px solid black; background-color: #ededed;"></td>
+                            <td width ="100px"  style="border: 1px solid black; background-color: #596A81;"></td>
+                        </tr>
+                        <tr style="border: 1px solid black" id="row2" height="100px">
+                            <td class="cell" style="border: var(--bg-color); background-color: var(--bg-color);"> Deep Sea </td>
+                            <td style="border: 1px solid black; background-color: #263238 ;"></td>
+                            <td style="border: 1px solid black; background-color: #37474f  ;"></td>
+                            <td style="border: 1px solid black; background-color: #cfd8dc  ;"></td>
+                            <td style="border: 1px solid black; background-color: #455a64  ;"></td>
+                        </tr>
+                        <tr style="border: 1px solid black"  id="row3" height="100px">
+                            <td class="cell" style="border: var(--bg-color); background-color: var(--bg-color);"> Marine </td>
+                            <td style="border: 1px solid black; background-color: #006064;"></td>
+                            <td style="border: 1px solid black; background-color: #00838f ;"></td>
+                            <td style="border: 1px solid black; background-color: #e0f7fa ;"></td>
+                            <td style="border: 1px solid black; background-color: #0097a7 ;"></td>
+                        </tr>
+                        <tr style="border: 1px solid black"  id="row4" height="100px">
+                            <td class="cell" style="border: var(--bg-color); background-color: var(--bg-color);"> Forest </td>
+                            <td style="border: 1px solid black; background-color: #593a0e;"></td>
+                            <td style="border: 1px solid black; background-color: #72601b;"></td>
+                            <td style="border: 1px solid black; background-color: #818c3c;"></td>
+                            <td style="border: 1px solid black; background-color: #25591f;"></td>
+                        </tr>
+                        <tr style="border: 1px solid black"  id="row5" height="100px">
+                            <td class="cell" style="border: var(--bg-color); background-color: var(--bg-color);"> Citric </td>
+                            <td style="border: 1px solid black; background-color: #827717 ;"></td>
+                            <td style="border: 1px solid black; background-color: #9e9d24 ;"></td>
+                            <td style="border: 1px solid black; background-color: #f0f4c3 ;"></td>
+                            <td style="border: 1px solid black; background-color: #afb42b ;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button id = "submit_theme" class="login btn btn-outline-primary">Save Theme</button>
+                <br/>
+            </div>
+        </div>
+    </div>
+
+
+    <style type="text/css">
+        #sidebarCollapse{ display:none; }
+    </style>
+{% endblock %}

@@ -1,0 +1,148 @@
+
+{% extends 'Generic/base2.html' %}
+{% load widget_tweaks %}
+{%load crispy_forms_tags%}
+{% block title %}<title>Acces form</title>{% endblock %}
+
+{% block content %}
+
+<br> {# Space before the header #}
+
+<!-- V3 CAPTCHA -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <!-- reCAPTCHA API -->
+    <script src='https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}'></script>
+  
+    <title> ABA Remote GS -  reCAPTCHA v3 </title>
+</head>
+
+<!-- Main form -->
+<div class="container" style="top: 25%; padding-top: 10px;">
+    <form method="POST" class="post-form">{% csrf_token %}
+        <h3>Enter your credentials</h3> <br>
+
+        <!-- Nice alert when having an error -->
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger" role="alert">
+                {% for error in form.non_field_errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Distribute the fields of the form -->
+        <div class="container-fluid">
+            <div class="row">
+                <!-- User name -->
+                <div class="col-6">
+                    <div class="form-group">
+                        {{ form.username.label_tag }}
+                    
+                        {% if form.is_bound %}
+                            {% if form.username.errors %}
+                            {% render_field form.username class="form-control is-invalid" %}
+                            {% for error in form.username.errors %}
+                                <div class="invalid-feedback">
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+                            {% else %}
+                            {% render_field form.username class="form-control is-valid" %}
+                            {% endif %}
+                        {% else %}
+                            {% render_field form.username class="form-control" %}
+                        {% endif %}
+                    
+                        {% if form.username.help_text %}
+                            <small class="form-text text-muted">{{ form.username.help_text }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="col-6">
+                    <div class="form-group">
+                        {{ form.password.label_tag }}
+                    
+                        {% if form.is_bound %}
+                            {% if form.password.errors %}
+                            {% render_field form.password class="form-control is-invalid" %}
+                            {% for error in form.password.errors %}
+                                <div class="invalid-feedback">
+                                {{ error }}
+                                </div>
+                            {% endfor %}
+                            {% else %}
+                            {% render_field form.password class="form-control is-valid" %}
+                            {% endif %}
+                        {% else %}
+                            {% render_field form.password class="form-control" %}
+                        {% endif %}
+                    
+                        {% if form.password.help_text %}
+                            <small class="form-text text-muted">{{ form.password.help_text }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            {% comment %}<div class="row">
+                <!-- Captcha v2 -->
+                 <div class="col-6">
+                    <div class="form-group">
+                        {{ form.captcha.label_tag }}
+                    
+                        {% if form.is_bound %}
+                            {% if form.captcha.errors %}
+                            {% render_field form.captcha class="form-control is-invalid" %}
+                            {% for error in form.captcha.errors %}
+                                <div class="invalid-feedback">
+                                {{ error }}
+                                </div>
+                            {% endfor %}
+                            {% else %}
+                            {% render_field form.captcha class="form-control is-valid" %}
+                            {% endif %}
+                        {% else %}
+                            {% render_field form.captcha class="form-control" %}
+                        {% endif %}
+                    
+                        {% if form.captcha.help_text %}
+                            <small class="form-text text-muted">{{ form.captcha.help_text }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>{% endcomment %}
+        </div>  
+        <!-- Buttons -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-7"></div>
+                <div class="col-md-5">
+                    <button type="submit" class="signup btn btn-outline-primary"">Log In</button>
+                    <a class="signup btn btn-outline-primary" href="{% url 'Generic:reset'%}">Forgot my credentials</a>
+                </div>
+            </div>
+            <div class="row">
+                <p><small> *ABA's UAV Remote GS remembers you! You have to log out to close your session.</small></p>
+            </div>
+        </div>
+        <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response"> 
+    </form>
+</div>
+
+
+<script>
+    //global grecaptcha
+    grecaptcha.ready(function() {
+        grecaptcha.execute('{{recaptcha_site_key}}', {action: "/contact/"}).then(function(token) {
+        document.getElementById('g-recaptcha-response').value = token;
+        });
+    });
+</script>
+
+{% endblock %}

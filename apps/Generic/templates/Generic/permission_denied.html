@@ -1,0 +1,32 @@
+{% extends 'Generic/base.html' %}
+
+{% load static %}
+
+{% block title %}<title>Permission denied</title>{% endblock %}
+
+{% block sidebar_content %}
+    <style type="text/css">
+        #tab_home {
+            border-bottom-style: solid;
+            border-bottom-color: white;
+        }
+    </style>
+
+    <div class="wrapper" id="wrapper"> 
+        <div class="container-fluid" id="content">
+            <br/>
+
+            <!-- Alert -->
+            <div class="alert alert-danger" role="alert">
+                You do not have the rights to access this functionality. Contact ABA's UAV Remote GS development team if you need to get access.
+            </div>
+        </div>
+    </div>
+
+    <!-- Select the corresponding nav tab-->
+    <script type="text/javascript">
+        $("li").removeClass("active"); // First, remove all active tabs
+        document.getElementById("tab_home").className = "active"; // Active the clicked one
+    </script>
+
+{% endblock %}

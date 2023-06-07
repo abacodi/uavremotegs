@@ -1,0 +1,23 @@
+{% extends 'RGS/base_RGS.html' %}
+
+{% load static %}
+
+{% block title %}<title>RGS: Manual Control Flight</title>{% endblock %}
+
+{% block content %}
+<br/>
+<div class="row">
+    
+</div>
+
+    <!-- Select the corresponding nav tab-->
+    <script type="text/javascript">
+        // Initialise tooltips
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+
+        $("li").removeClass("active"); // First, remove all active tabs
+        document.getElementById("nav_manual").className = "active"; // Active the clicked one
+    </script>
+{% endblock %}
