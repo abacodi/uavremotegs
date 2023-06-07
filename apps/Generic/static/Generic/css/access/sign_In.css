@@ -1,0 +1,142 @@
+/* ------------ body -----------------------*/
+
+body, html {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgb(63, 51, 162), rgb(133, 129, 234));
+}
+
+
+
+/* -------------- Header --------------------*/
+
+#header_sign {
+    background: var(--noactive-bg-color);
+    color: white;
+    text-align: center;
+    height: 100px;
+    /*max-width: 1000px;*/
+}
+
+
+#header_sign p {
+    font-size: 2.4em;
+    margin: auto;
+    padding-top: 20px;
+    height: 100px;
+}
+
+/* ------------- Container -------------*/
+
+.container{
+    padding: 0;
+}
+
+.card-container.card {
+    max-width: 900px;
+    min-width: 350px;
+    padding: 40px 40px;
+    margin: auto;
+    top: 50px;
+}
+
+/* --------- Buttons -----------*/
+
+
+.login {
+    width: 81%;
+    margin-right: 20px;
+    color: var(--noactive-bg-color);
+    background: transparent none;
+    border-color: var(--noactive-bg-color);
+}
+
+.login:hover {
+    color: #fff;
+    background-color: var(--noactive-bg-color);
+    border-color: var(--noactive-bg-color);
+}
+
+.login:not(:disabled):not(.disabled):active {
+    color: #fff;
+    background-color: var(--noactive-bg-color);
+    border-color: var(--noactive-bg-color);
+}
+
+.login.focus, .login:focus, .login:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.2rem var(--active-bg-color);
+}
+
+
+.signup {
+    margin-left: 20px;
+    color: var(--noactive-bg-color);
+    background: transparent none;
+    border-color: var(--noactive-bg-color);
+}
+
+.signup:hover {
+    color: #fff;
+    background-color: var(--noactive-bg-color);
+    border-color: var(--noactive-bg-color);
+}
+
+.signup:not(:disabled):not(.disabled):active {
+    color: #fff;
+    background-color: var(--noactive-bg-color);
+    border-color: var(--noactive-bg-color);
+}
+
+.signup.focus, .signup:focus, .signup:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.2rem var(--active-bg-color);
+}
+
+.save {
+    margin-left: 0;
+    color: var(--noactive-bg-color);
+    background: transparent none;
+    border-color: var(--noactive-bg-color);
+    position: relative;
+    left: 0;
+    width: 250px;
+}
+
+.save:hover {
+    color: #fff;
+    background-color: var(--noactive-bg-color);
+    border-color: var(--noactive-bg-color);
+}
+
+.save:not(:disabled):not(.disabled):active {
+    color: #fff;
+    background-color: var(--noactive-bg-color);
+    border-color: var(--noactive-bg-color);
+}
+
+.save.focus, .save:focus, .save:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.2rem var(--active-bg-color);
+}
+
+.cancel {
+    margin-left: 0px;
+    color: var(--noactive-bg-color);
+    background: transparent none;
+    border-color: var(--noactive-bg-color);
+    margin-left: 30px;
+}
+
+.cancel:hover {
+    color: #fff;
+    background-color: var(--noactive-bg-color);
+    border-color: var(--noactive-bg-color);
+}
+
+.cancel:not(:disabled):not(.disabled):active {
+    color: #fff;
+    background-color: var(--noactive-bg-color);
+    border-color: var(--noactive-bg-color);
+}
+
+.cancel.focus, .cancel:focus, .cancel:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.2rem var(--active-bg-color);
+}

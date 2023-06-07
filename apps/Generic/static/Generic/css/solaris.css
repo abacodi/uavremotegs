@@ -1,0 +1,23 @@
+/* color of sidebar when the item is not selected*/
+:root {
+    --noactive-bg-color: 	#827717;
+}
+
+
+/* color of sidebar when the item is selected*/
+:root {
+    --active-bg-color: 	#9e9d24;
+}
+
+/* color of app background*/
+:root {
+    --bg-color: #f0f4c3;
+}
+
+:root {
+    --title2-size: 4rem;
+}
+/* color of app navbar and footer*/
+:root {
+    --sticky-color: #afb42b;
+}

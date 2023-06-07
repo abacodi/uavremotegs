@@ -1,0 +1,110 @@
+h1 {
+    color: black;
+    text-align: center;
+    /*font-family: "Verdana", Geneva, sans-serif;*/
+}
+
+/****** Body ******/
+body {
+    margin: 0;
+    background: var(--bg-color);
+    height: 100%;
+    font-family: 'Montserrat', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /*min-width: 1200px;*/
+    /*min-height: 438px;*/
+}
+
+.box {
+    height: -webkit-fill-available;
+}
+
+
+/* NavBar */
+
+#navBar {
+    /*height: 50px;*/
+}
+
+#contentNavBar{
+    height: 100%;
+    width: 100%;
+}
+
+/*@media (max-width:992px) and (min-width:575px) {*/
+    /*#navBar {*/
+        /*height: 188px !important;*/
+    /*}*/
+/*}*/
+
+/*@media (max-width:574px) {*/
+    /*#navBar {*/
+        /*height: 232px !important;*/
+    /*}*/
+/*}*/
+
+/* Wrapper of the base */
+.wrapper {
+    /*position: relative;*/
+    display: flex;
+    width: 100%;
+    /*min-height: -webkit-fill-available;*/
+    /*min-width: 1200px;*/
+    /* Padding for navbar */
+    /*padding-top: 55px;*/
+    /*Padding for footer */
+    /*padding-bottom: 40px;*/
+    /*height: 90vh;*/
+
+}
+
+#content {
+    background-color: var(--bg-color);
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    overflow-y: scroll;
+    max-width: none; !important;
+    /*margin: auto !important;*/
+}
+
+#content::-webkit-scrollbar{
+    display: none;
+}
+
+/*Modal message above all others*/
+.modal{
+    z-index: 10001;
+}
+
+html {
+    height: 100%;
+}
+
+/* --------- Buttons -----------*/
+.login {
+    color: var(--noactive-bg-color);
+    background: transparent none;
+    border-color: var(--noactive-bg-color);
+}
+
+.login:hover {
+    color: #fff;
+    background-color: var(--noactive-bg-color);
+    border-color: var(--noactive-bg-color);
+}
+
+.login:not(:disabled):not(.disabled):active {
+    color: #fff;
+    background-color: var(--noactive-bg-color);
+    border-color: var(--noactive-bg-color);
+}
+
+.login.focus, .login:focus, .login:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.2rem var(--active-bg-color);
+}
+
+.page-item {
+    color: var(--noactive-bg-color);
+    background: transparent none;
+    border-color: var(--noactive-bg-color);
+}

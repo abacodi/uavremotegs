@@ -1,0 +1,48 @@
+{% extends 'RGS/base_RGS.html' %}
+
+{% load static %}
+
+{% block title %}<title>RGS: Real-Time Dashboard</title>{% endblock %}
+
+{% block content %}
+    <style type="text/css">
+        #tab_dashboard {
+            border-bottom-style: solid;
+            border-bottom-color: white;}
+        .tox.tox-tinymce-aux {
+            z-index: 999999999;
+        }
+    </style>
+    <div class="wrapper" id="wrapper"> 
+        <div class="container-fluid" id="content">
+            <div class="container-fluid" id="module" style="max-width: 100%; width: 100%; margin: 2px">
+                <br/>
+                <h2 class="display-3">UAV Dashboard</h2>
+                <hr class="my-4">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4>Current Data:</h4>
+                        <ul>
+                            <li>Altitude: <span id="altitude"></span></li>
+                            <li>Location: <span id="location"></span></li>
+                            <li>Heading: <span id="heading"></span></li>
+                            <li>Velocity: <span id="velocity"></span></li>
+                            <li>Battery: <span id="battery"></span></li>
+                            <li>Mode: <span id="mode"></span></li>
+                            <li>Is Armed: <span id="is_armed"></span></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6">
+                        <h4>Configuration Parameters:</h4>
+                        <ul id="config">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Include jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Include the JavaScript file for AJAX requests -->
+    <script src="{% static 'dashboard.js' %}"></script>
+{% endblock %}

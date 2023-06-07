@@ -1,0 +1,66 @@
+{% extends 'Generic/base.html' %}
+{% load static %}
+{%load crispy_forms_tags%}
+{% block title %}<title>Signup form</title>{% endblock %}
+
+{% block sidebar_content %}
+    <br>
+    {%  if request.user.is_superuser %}
+    <!-- Main form -->
+    <div class="container" style="padding-top: 10px">
+        <!-- code for displaying success or error message in template -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags | safe }}">
+                    {{ message | safe }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <form method="POST" class="post-form" style="width: 100%">{% csrf_token %}
+            <h1>Sign up</h1>
+            {% for field in form %}
+                <p>
+                    {{ field |as_crispy_field }}
+                    {% for error in field.errors %}
+                        <p style="color: red">{{ error }}
+                    {% endfor %}
+                </p>
+            {% endfor %}
+            <button type="submit" class="sumbitbutton btn btn-outline-primary">Send email</button>
+            <a class="sumbitbutton btn btn-outline-primary" href="{% url 'Generic:access'%}">Cancel</a>
+        </form>
+
+    </div>
+    {% else %}
+        <div class="alert alert-danger" role="alert">
+            To access this feature you need to be an administrator.
+        </div>
+    {% endif %}
+    <style type="text/css">
+        #sidebarCollapse{ display:none; }
+        .footer{
+            margin-top: 7%;
+        }
+        .sumbitbutton {
+            color: var(--noactive-bg-color);
+            background: transparent none;
+            border-color: var(--noactive-bg-color);
+        }
+
+        .sumbitbutton:hover {
+            color: #fff;
+            background-color: var(--noactive-bg-color);
+            border-color: var(--noactive-bg-color);
+        }
+
+        .sumbitbutton:not(:disabled):not(.disabled):active {
+            color: #fff;
+            background-color: var(--noactive-bg-color);
+            border-color: var(--noactive-bg-color);
+        }
+
+        .sumbitbutton.focus, .login:focus, .login:not(:disabled):not(.disabled):active:focus {
+            box-shadow: 0 0 0 0.2rem var(--active-bg-color);
+        }
+    </style>
+{% endblock %}

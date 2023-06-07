@@ -1,0 +1,66 @@
+{% extends 'Generic/base.html' %}
+
+{% load static %}
+
+{% block sidebar_content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="wrapper" id="wrapper">
+                <!-- Sidebar -->
+                <div class="sidebar-content">
+                    <!-- Sidebar -->
+                    
+                    <nav id="sidebar">
+                    <!-- Sidebar Header -->
+                    <div class="sidebar-header">
+                        <h4 style="width: 225px; height: 130px;"><img src="{% static 'Generic/img/logo.svg' %}" alt="img" height="120" id="wifi_logo"> <p><span>UAV Remote GS</span></p></h4>
+                        <strong style="width: 100px; height: 110px;"><img src="{% static 'Generic/img/logo.svg' %}" alt="img" height="120" id="wifi_logo" style="transform: scale(0.8) translate(-25px, 0px)"></strong>
+                    </div>
+
+                    <!-- Sidebar Links -->
+                    <ul class="list-unstyled components" style="border-bottom-width: 0">
+                        <li id="nav_home"><a href="{% url 'RGS:home'%}" title = "UAV Real-Time Dashboard"><i id="homeIcon" class="fa fa-circle" aria-hidden="true"></i><span style="margin-left:0.5em;" class="sidebar-text">Real-Time Dashboard</span></a></li>
+                        <li id="nav_manual"><a href="{% url 'RGS:manual'%}" title = "UAV Manual Control"><i id="homeIcon" class="fa fa-plane" aria-hidden="true"></i><span style="margin-left:0.5em;" class="sidebar-text">Manual Control</span></a></li>
+                        <li id="nav_auto"><a href="{% url 'RGS:auto'%}" title = "UAV Autonomous Flight"><i id="homeIcon" class="fa fa-globe" aria-hidden="true"></i><span style="margin-left:0.5em;" class="sidebar-text">Autonomous Flight</span></a></li>
+                    </ul>
+                    </nav>
+                </div>
+
+                <!-- Page Content -->
+                <div class="container-fluid" id="content">
+                    <!-- Personalized block from another html -->
+                    <!-- Module starts here -->
+                    <div class="container-fluid" id="module" style="max-width: 100%; width: 100%; margin: 2px">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script type="text/javascript" src="{% static 'Generic/js/sidebar.js' %}" ></script>
+    <script type="text/javascript" src="{% static 'RGS/js/sidebar.js' %}" ></script>
+    <style type="text/css">
+        #tab_RGS {
+        border-bottom-style: solid;
+        border-bottom-color: white;}
+    </style>
+    <style type="text/css">
+        #sidebar.active .sidebar-text {
+            display: none;
+        }
+        #sidebar.active ul li a i {
+        font-size: 1.5em !important;
+        }
+        #sidebar.active .has-subtabs > a .fa:after {
+            content: "   \f0d7";
+            {% comment %} content: "   \f0fe"; for a plus sign {% endcomment %}
+        }
+        #sidebar:not(.active) .sidebar-text::after {
+            display: none;
+        }
+    </style>
+{% endblock %}

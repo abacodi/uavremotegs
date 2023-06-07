@@ -1,0 +1,27 @@
+/* Declare your variables here*/
+
+
+/* color of sidebar */
+:root {
+    --noactive-bg-color: #352A71 ;
+}
+
+
+/* color of sidebar when the item is selected*/
+:root {
+    --active-bg-color: #6BBEE9      ;
+}
+
+/* color of app background*/
+:root {
+    --bg-color: #ffffff;
+}
+
+:root {
+    --title2-size: 4rem;
+}
+
+/* color of app navbar and footer*/
+:root {
+    --sticky-color: #352A71  ;
+}

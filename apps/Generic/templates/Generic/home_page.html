@@ -1,0 +1,60 @@
+{% extends 'Generic/base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}<title>Home</title>{% endblock %}
+
+{% block sidebar_content %}
+    <style type="text/css">
+        #tab_home {
+        border-bottom-style: solid;
+        border-bottom-color: white;}
+        .tox.tox-tinymce-aux {
+        z-index: 999999999;
+        }
+    </style>
+
+    <div class="wrapper" id="wrapper"> 
+        <div class="container-fluid" id="content">
+            <div class="container-fluid" id="module" style="max-width: 100%; width: 100%; margin: 2px">
+                <br/>
+
+                <div class="row">
+                    <div class="contentJumbo col-sm-12 col-md-4 col-lg-3" id="home_context">
+                        <div class="jumbotron" id="jumbo_context" style="height: fit-content; min-height: 120vh !important;">
+                            <div id="head_context">
+                                <h3 class="display-4">About Us</h3>
+                                <p class="lead">ABA's UAV Remote Ground Station: Embracing the Future of UAVs</p>
+                                <hr class="my-4">
+                            </div>
+                            <div id="cont_context" class="cont_jumbo">
+                                <p>Our project focuses on the exciting realm of UAV remote operations via air-link, a rapidly evolving technology that has vast potential in numerous applications. </p>
+                                <p>We aim to construct a UAV and develop an online remote station capable of controlling the UAV from any location with an internet connection. This comprehensive study will contribute to advancing UAV technology and its practical applications across various industries.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contentJumbo col-sm-12 col-md-8 col-lg-9" id="home_welcome">
+                        <div class="jumbotron" id="jumbo_welcome" style="height: fit-content; min-height: 120vh !important;">
+                            <div id="head_welcome">
+                                <h3 class="display-4">Welcome to ABA's UAV Remote Ground Station</h3>
+                                <p class="lead">Expertly designed and developed by Aba Sargious</p>
+                                <hr class="my-4">
+                            </div>
+                            <div id="cont_welcome" class="cont_jumbo" style="height: auto">
+                                <p>This application offers:</p>
+                                <ul>
+                                    <li><strong>Manual Control</strong>: Directly pilot the UAV.</li>
+                                    <li><strong>Autonomous Flight</strong>: Configure your own flight path for autonomous operations.</li>
+                                    <li><strong>Real-time dashboard</strong>: Monitor vital UAV telemetry data including GPS, velocity, and more.</li>
+                                </ul>
+                                <hr class="my-4">
+                                <p>We aim to push the boundaries of what is possible with UAV technology, exploring diverse applications including agricultural monitoring, construction site surveying, and critical area surveillance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
