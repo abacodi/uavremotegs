@@ -1,10 +1,20 @@
 $(document).ready(function() {
-    function refreshDashboardData() {
+    function refreshDashboardData(){
+        // Then, send also the data of the projects hours
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+
+        // AJAX call
         $.ajax({
-            url: '/dashboard/',
-            type: 'GET',
+            method: "POST",
+            url: window.location.href,
+            data: {trigger: 'update_telemetry'},
             success: function(data) {
-                // Update the page with the new data
                 $('#altitude').text(data.altitude);
                 $('#location').text(data.location);
                 $('#heading').text(data.heading);
@@ -18,13 +28,21 @@ $(document).ready(function() {
                 for(let key in data.config) {
                     configList.append(`<li><strong>${key}:</strong> ${data.config[key]}</li>`);
                 }
+                alert(data.is_armed);
             },
             complete: function(data) {
                 // Schedule the next request when this one's complete
-                setTimeout(refreshDashboardData, 5000); // The number is in milliseconds, so 5000 means 5 seconds
+                setTimeout(refreshDashboardData, 1000); // The number is in milliseconds, so 1000 means 1 seconds
             }
         });
     };
     // Call the function to start
     refreshDashboardData();
+
+    /* POST SAFE METHOD */
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+
 });
