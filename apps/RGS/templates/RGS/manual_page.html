@@ -3,66 +3,70 @@
 {% load static %}
 
 {% block title %}<title>RGS: Manual Control Flight</title>{% endblock %}
-
 {% block content %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Font Awesome Script for icons -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<script>
+    lat = '{{ lat | safe }}';
+    lon = '{{ lon | safe }}';
+    alt = '{{ alt | safe }}';
+</script>
 <!-- Include the JavaScript file for AJAX requests -->
 <script type="text/javascript" src="{% static 'RGS/js/manual_control.js' %}"></script>
 
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
-<br/>
-<style type="text/css">
-    #tab_manual_control {
-        border-bottom-style: solid;
-        border-bottom-color: white;}
-    .tox.tox-tinymce-aux {
-        z-index: 999999999;
-    }
-    .slider{
-        width: 80%;
-        margin: 15px auto;
-    }
-</style>
-<div class="wrapper" id="wrapper"> 
-    <div class="container-fluid" id="content">
-        <div class="container-fluid" id="module" style="max-width: 100%; width: 100%; margin: 2px">
-            <br/>
-            <h2 class="display-3">Manual Control</h2>
-            <hr class="my-4">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h4>Flight Controls:</h4>
-                    <button id="btnMoveNorth" class="btn btn-info">Move North</button>
-                    <button id="btnMoveSouth" class="btn btn-info">Move South</button>
-                    <button id="btnMoveEast" class="btn btn-info">Move East</button>
-                    <button id="btnMoveWest" class="btn btn-info">Move West</button>
-                    <button id="btnMoveUp" class="btn btn-info">Move Up</button>
-                    <button id="btnMoveDown" class="btn btn-info">Move Down</button>
-                    <button id="btnUpdate" class="btn btn-warning">Update Data</button>
-                    <br/>
-                    <button id="btnArm" class="btn btn-success">Arm</button>
-                    <button id="btnDisarm" class="btn btn-danger">Disarm</button>
-                    <br/>
-                    <label for="takeOffAltitude">Take-off altitude:</label>
-                    <input type="number" id="takeOffAltitude" name="takeOffAltitude">
-                    <button id="btnTakeOff" class="btn btn-primary">Take Off</button>
-                    <br/>
-                    <label for="altitudeSlider">Altitude:</label>
-                    <div id="altitudeSlider" class="slider"></div>
-                    <label for="velocitySlider">Velocity:</label>
-                    <div id="velocitySlider" class="slider"></div>
+<div class="container py-5">
+    <h2 class="display-3 text-center">Manual Control</h2>
+    <hr class="my-4">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="text-center">Flight Controls:</h4>
                 </div>
-                <div class="col-sm-6">
-                    <h4>Current State:</h4>
-                    <ul>
-                        <li>Is Armed: <span id="is_armed"></span></li>
-                        <li>Altitude: <span id="altitude"></span></li>
-                        <li>Velocity: <span id="velocity"></span></li>
-                    </ul>
+                <div class="card-body">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-between"> {% csrf_token %}
+                        <button id="btnMoveNorth" class="btn btn-info"><i class="fas fa-arrow-up"></i> Move North</button>
+                        <button id="btnMoveSouth" class="btn btn-info"><i class="fas fa-arrow-down"></i> Move South</button>
+                        <button id="btnMoveEast" class="btn btn-info"><i class="fas fa-arrow-right"></i> Move East</button>
+                        <button id="btnMoveWest" class="btn btn-info"><i class="fas fa-arrow-left"></i> Move West</button>
+                        <button id="btnMoveUp" class="btn btn-info"><i class="fas fa-level-up-alt"></i> Move Up</button>
+                        <button id="btnMoveDown" class="btn btn-info"><i class="fas fa-level-down-alt"></i> Move Down</button>
+                    </div>
                 </div>
             </div>
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h4 class="text-center">Data Controls:</h4>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">{% csrf_token %}
+                        <button id="btnUpdate" class="btn btn-warning"><i class="fas fa-sync-alt"></i> Update Data</button>
+                        <button id="btnDisarm" class="btn btn-danger"><i class="fas fa-power-off"></i> Disarm</button>
+                        <button id="btnLand" class="btn btn-primary"><i class="fa fa-plane-landing"></i> Land</button>
+                        <br><hr>
+                        <div class="input-group mb-3">
+                            <input type="number" id="takeOffAltitude" name="takeOffAltitude" class="form-control" placeholder="Take-off altitude">
+                            <button type="submit" id="btnTakeOff" class="btn btn-primary"><i class="fas fa-rocket"></i> Take Off</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h4>Current State:</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Is Armed: <span id="is_armed"></span></li>
+                <li class="list-group-item">Altitude: <span id="altitude"></span></li>
+                <li class="list-group-item">Velocity: <span id="velocity"></span></li>
+                <li class="list-group-item">Location: <span id="location"></span></li></li>
+            </ul>
+            <div id="mapid" style="height: 500px;"></div>
         </div>
     </div>
 </div>

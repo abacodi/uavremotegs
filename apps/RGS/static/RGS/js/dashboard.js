@@ -28,7 +28,6 @@ $(document).ready(function() {
                 for(let key in data.config) {
                     configList.append(`<li><strong>${key}:</strong> ${data.config[key]}</li>`);
                 }
-                alert(data.is_armed);
             },
             complete: function(data) {
                 // Schedule the next request when this one's complete
