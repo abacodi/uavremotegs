@@ -61,17 +61,6 @@ $(document).ready(function() {
         updateState();
     });
 
-    $('#btnDisarm').click(function(){
-        $.ajax({
-            method: "POST",
-            url: window.location.href,
-            data: {trigger: 'disarm_uav'},
-            success: function(data) {
-                alert('UAV disarmed')
-            },
-        });
-    });
-
     $('#btnTakeOff').click(function(e){
         e.preventDefault();
         var altitude = $('#takeOffAltitude').val();
@@ -80,6 +69,9 @@ $(document).ready(function() {
             method: "POST",
             url: window.location.href,
             data: {trigger: 'take_off', altitude: altitude},
+            success: function(data) {
+                alert('Drone taking off..')
+            },
         });
     });
 
@@ -89,7 +81,7 @@ $(document).ready(function() {
             url: window.location.href,
             data: {trigger: 'land_drone'},
             success: function(data) {
-                alert('Drone landing')
+                alert('Drone landing..')
             },
         });
     });

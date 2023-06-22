@@ -84,8 +84,7 @@ class HomeView(TemplateView):
     @staticmethod
     def dashboard(request):
         if request.method == "POST":
-            # Call start_sitl() when our server starts
-            
+            # Initialize our vehicle connection           
             vehicle = global_vehicle
             if request.POST['trigger'] == 'update_telemetry':
                 data = {
@@ -107,7 +106,7 @@ class HomeView(TemplateView):
     
     @staticmethod
     def manual_control(request):
-        vehicle = global_vehicle  # Initialize your vehicle connection
+        vehicle = global_vehicle  # Initialize our vehicle connection
 
         if request.method == "POST":
             if request.POST['trigger'] == 'update_data':
@@ -118,14 +117,6 @@ class HomeView(TemplateView):
                     'velocity': vehicle.velocity,
                     'is_armed': vehicle.armed,
                     'location': [vehicle.location.global_relative_frame.lat, vehicle.location.global_relative_frame.lon],
-                }
-                return JsonResponse(data)
-
-            elif request.POST['trigger'] == 'disarm_uav':
-                vehicle.armed = False
-                vehicle.close()
-                data = {
-                    'is_armed': vehicle.armed,
                 }
                 return JsonResponse(data)
             
@@ -186,7 +177,7 @@ class HomeView(TemplateView):
                 elif direction == 'down':
                     # Code to move the drone down
                     vehicle.simple_goto(LocationGlobalRelative(vehicle.location.global_relative_frame.lat, vehicle.location.global_relative_frame.lon, vehicle.location.global_relative_frame.alt - 1))
-
+                
                 data = {
                     'altitude': vehicle.location.global_relative_frame.alt,
                     'heading': vehicle.heading,
